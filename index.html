@@ -3,20 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For You, My Love</title>
-  <link rel="stylesheet" href="style.jss">
+  <title>For My Valentine</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f5d0d0;
+    }
+    .container {
+      position: relative;
+      width: 800px;
+      height: 800px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    .container img:first-child { 
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .button {
+      position: absolute;
+      top: 39%;
+      left: 47%;
+      transform: translate(-50%, -50%);
+      width: 24px;  height: 24px;  background-color: red;
+      border: none;
+      border-radius: 50%;  cursor: pointer;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+      text-align: center;
+      font-size: 100px;
+      color: #e08080;
+    }
+    .message.active {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    .love-photo {
+      display: none;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 240px;
+      overflow: hidden;
+    }
+    .love-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1 class="title">To My Valentine</h1>
-    <p class="message">You bring sunshine to my days and warmth to my heart. Here's a little something to show you how much you mean to me.</p>
-    <img src="yourimage.jpg" alt="Your special image" class="love-image">
-    <div class="heart-container">
-      <i class="fas fa-heart heart"></i>
+    <img src="tolga.jpg" alt="Your Photo">
+    <button class="button"></button>  <div class="message">I love youuuuuuuuu!</div>
+    <div class="love-photo">
+      <img src="happy.jpg" alt="Love Photo">
     </div>
-    <p class="secret-message">Click the heart to reveal a secret message!</p>
   </div>
+  
+  <script>
+    const button = document.querySelector('.button');
+    const message = document.querySelector('.message');
+    const lovePhoto = document.querySelector('.love-photo');
+    const initialImage = document.querySelector('.container img:first-child');
 
-  <script src="script.js"></script>
+    button.addEventListener('click', () => {
+      const popup = prompt("Gizli kelimeyi girin:");
+
+      if (popup.toLowerCase() === 'boink') {
+        message.classList.add('active');
+        lovePhoto.style.display = 'block';
+        initialImage.style.opacity = 0;
+        button.style.opacity = 0;
+      }
+    });
+  </script>
 </body>
 </html>
